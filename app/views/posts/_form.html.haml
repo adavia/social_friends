@@ -1,0 +1,4 @@
+= simple_form_for(post, remote: true) do |f|
+  = f.input :body, label: false, placeholder: "What are you thinking?"
+  .pull-right
+    = f.button :submit, "Publish", class: "btn btn-sm", data: {disable_with: "Publishing.."}

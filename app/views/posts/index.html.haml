@@ -1,5 +1,5 @@
 .row
-  .col-md-3
+  .col-sm-4
     .card
       .avatar
         %img.img-responsive.img-thumbnail{alt: "", src: "http://lorempixel.com/80/80/people/9/"}
@@ -7,5 +7,13 @@
         .title
           %a
             %h4 #{current_user}
-        .meta Passionate designer
-        .meta Curious developer
+        #user-status
+          = render "status", user: current_user
+
+  .col-sm-7
+    .panel-container
+      .clearfix
+        #form-posts
+          = render "form", post: @post
+    #render-posts
+      = render @posts

@@ -5,4 +5,4 @@
     - if post.attachments.any?
       .attachments
         - post.attachments.each do |attachment|
-          = image_tag(attachment.file.url, size: "200x100")
+          = image_tag attachment.file.url(:thumb)

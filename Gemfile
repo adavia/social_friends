@@ -16,6 +16,8 @@ gem 'simple_form', '~> 3.1.0'
 gem 'devise', '~> 3.4.1'
 # Add File Uploading
 gem 'carrierwave', '~> 0.10.0'
+# Image manipulation
+gem 'mini_magick'
 # Handle ajax File Uploads
 gem 'jquery-form-rails'
 # Use Uglifier as compressor for JavaScript assets

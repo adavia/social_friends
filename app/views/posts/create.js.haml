@@ -1,8 +1,10 @@
 - if @post.errors.any?
   $("#form-posts").html("#{ j render 'form', post: @post }");
+  $("#img-holder").empty();
 - else
   $("#new_post").find(".form-group").removeClass("has-error");
   $("#new_post").find("span.help-block").remove();
   $("#user-status").html("#{ j render 'status', user: current_user }");
   $("#render-posts").prepend($("#{ j render @post }").fadeIn(1000));
   $("#new_post")[0].reset();
+  $("#img-holder").empty();

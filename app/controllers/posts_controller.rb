@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 	def index
     @posts = Post.all
     @post = current_user.posts.build
+    @post.attachments.build
 	end
 
   def create
@@ -12,14 +13,24 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to posts_path }
+        upload_files
+        format.html { 
+          redirect_to posts_path 
+        }
         format.js   {}
-        format.json { render json: @post, status: :created, location: @post }
+        format.json { 
+          render json: @post, status: :created, location: @post 
+        }
       else
         @posts = []
-        format.html { render :index }
+        @post.attachments.build
+        format.html { 
+          render :index 
+        }
         format.js   {}
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.json { 
+          render json: @post.errors, status: :unprocessable_entity 
+        }
       end
     end
   end
@@ -34,7 +45,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def upload_files  
+    if params[:attachments] && params[:attachments][:file] != [""]
+      params[:attachments][:file].each do |a|
+        @attachment = @post.attachments.create!(file: a)
+      end
+    end 
+  end
+
   def post_params
-    params.require(:post).permit(:body)
+    params.require(:post).permit(:body, attachments_attributes: [:file])
   end
 end

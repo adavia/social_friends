@@ -1,0 +1,4 @@
+= f.simple_fields_for :attachments do |ff|
+  %span.btn.btn-default.btn-sm.btn-file
+    = fa_icon "camera", text: "Upload"
+    = ff.file_field :file, label: false, multiple: true, name: "attachments[file][]"

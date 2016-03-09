@@ -21,4 +21,16 @@ RSpec.feature "Users can create new posts" do
 
     expect(page).to have_content "can't be blank"
   end
+
+  scenario "with attachments", js: true do
+    fill_in "post_body", with: "Saturday pool party event for friends"
+
+    attach_file "attachments[file][]", Rails.root.join("spec/fixtures/photo1.jpg"), visible: false
+
+    click_button "Publish"
+
+    within(".post-content .attachments") do
+      expect(page).to have_xpath("//img[contains(@src,'photo1.jpg')]")
+    end
+  end
 end

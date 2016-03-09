@@ -1,5 +1,5 @@
 .row
-  .col-sm-4
+  .col-md-4
     .card
       .avatar
         %img.img-responsive.img-thumbnail{alt: "", src: "http://lorempixel.com/80/80/people/9/"}
@@ -10,10 +10,13 @@
         #user-status
           = render "status", user: current_user
 
-  .col-sm-7
+  .col-md-7
     .panel-container
       .clearfix
         #form-posts
           = render "form", post: @post
+      .row
+        .col-md-9
+          #img-holder
     #render-posts
       = render @posts

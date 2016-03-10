@@ -38,9 +38,7 @@ class App.Post
           reader = new FileReader
           reader.onload = (e) ->
             $("<img />",
-              "src": e.target.result
-              "class": "img-thumbnail img-responsive").appendTo img_holder
-
+              "src": e.target.result).appendTo img_holder
           img_holder.show()
           reader.readAsDataURL @el[0].files[i]
           i++

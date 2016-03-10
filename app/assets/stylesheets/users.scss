@@ -14,5 +14,13 @@
 }
 
 .card .info {
-  padding: 20px;
+  padding: 15px;
+  .title a {
+    color: #333333;
+    text-decoration: none;
+  }
+  #user-status a {
+    color: #66757f;
+    text-decoration: none;
+  }
 }

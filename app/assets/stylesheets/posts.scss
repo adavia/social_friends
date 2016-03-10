@@ -5,6 +5,8 @@
 #img-holder {
   margin-top: 10px;
   img {
+    @extend .img-thumbnail;
+    @extend .img-responsive;
     position: relative;
     float: left;
     width: 100px;
@@ -14,5 +16,12 @@
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+}
+
+.media-user {
+  margin-bottom: 10px;
+  .media-body {
+    margin-top: 5px;
   }
 }

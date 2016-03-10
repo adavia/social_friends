@@ -1,8 +1,19 @@
 .panel-container
   = div_for(post, class: "post-content") do
-    = post.body
+    .media-user
+      .media
+        .media-left.media-bottom
+          = link_to image_tag("/assets/no-user.png",
+            class: "media-object img-thumbnail", width: "50"), root_path
+        .media-body
+          %h5.media-heading 
+            = post.user
+          %small
+            = time_ago_in_words post.created_at
+    %p
+      = post.body
 
     - if post.attachments.any?
       .attachments
         - post.attachments.each do |attachment|
-          = image_tag attachment.file.url(:thumb)
+          = image_tag attachment.file.url(:thumb), class: "img-thumbnail img-responsive"

@@ -1,5 +1,5 @@
-= simple_form_for(post, data: { behavior: "new-post" }) do |f|
-  = f.input :body, label: false, placeholder: "What are you thinking?"
+= simple_form_for(post, data: { behavior: "new-post" }) do |f|  
+  = f.input :body, label: false, placeholder: "What are you thinking?", input_html: {rows: 3}
   .pull-left
     = render partial: "attachments/form", locals: { f: f }
   .pull-right

@@ -49,6 +49,7 @@ header {
 }
 
 .panel-container {
+  border: 1px solid #e1e8ed;
   margin-bottom: 5px;
   background: #fff;
   padding: 20px;
@@ -58,6 +59,9 @@ header {
 }
 
 .btn-file {
+  @extend .btn;
+  @extend .btn-default;
+  @extend .btn-sm;
   position: relative;
   overflow: hidden;
 }
@@ -76,4 +80,8 @@ header {
   background: white;
   cursor: inherit;
   display: block;
+}
+
+.media-heading {
+  margin-bottom: 0px;
 }

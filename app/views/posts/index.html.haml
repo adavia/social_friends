@@ -2,7 +2,7 @@
   .col-md-4
     .card
       .avatar
-        %img.img-responsive.img-thumbnail{alt: "", src: "http://lorempixel.com/80/80/people/9/"}
+        %img.img-responsive.img-thumbnail{alt: "", src: "/assets/no-user.png", width: "80"}
       .info
         .title
           %a
@@ -12,11 +12,17 @@
 
   .col-md-7
     .panel-container
-      .clearfix
-        #form-posts
-          = render "form", post: @post
-      .row
-        .col-md-9
-          #img-holder
+      .media
+        .media-left
+          = link_to image_tag("/assets/no-user.png", 
+            class: "media-object img-thumbnail", width: "50"), root_path
+        .media-body
+          .media-heading
+            .clearfix
+              #form-posts
+                = render "form", post: @post
+            .row
+              .col-md-9
+                #img-holder
     #render-posts
       = render @posts

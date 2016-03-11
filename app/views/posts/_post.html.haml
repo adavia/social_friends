@@ -1,5 +1,8 @@
 .panel-container
   = div_for(post, class: "post-content") do
+    - if post.user.id == current_user.id
+      .pull-right
+        = link_to fa_icon("remove"), post, method: :delete, remote: true, title: "Remove post"
     .media-user
       .media
         .media-left.media-bottom
@@ -10,9 +13,9 @@
             = post.user
           %small
             = time_ago_in_words post.created_at
+
     %p
       = post.body
-
     - if post.attachments.any?
       .attachments
         - post.attachments.each do |attachment|

@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :create]
+  before_action :authenticate_user!, only: [:index, :create, :destroy]
+  before_action :set_post, only: [:destroy]
   before_action :post_owner!, only: [:destroy]
 
 	def index
@@ -35,7 +36,22 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post.destroy
+
+    respond_to do |format|
+      format.html { 
+        redirect_to posts_path 
+      }
+      format.js   {}
+    end 
+  end
+
   private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
   def post_owner!
     authenticate_user!

@@ -7,6 +7,8 @@
         .title
           %a
             %h4 #{current_user}
+            %small 
+              = current_user.email
         #user-status
           = render "status", user: current_user
 

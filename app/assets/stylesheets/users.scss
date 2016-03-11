@@ -1,6 +1,9 @@
 .card {
   background: #FFF;
   margin-bottom: 20px;
+  h4 {
+    margin-bottom: 0px;
+  }
 }
 
 .card .avatar {
@@ -19,8 +22,11 @@
     color: #333333;
     text-decoration: none;
   }
-  #user-status a {
-    color: #66757f;
-    text-decoration: none;
-  }
-}
+  #user-status {
+    margin-top: 10px;
+    a {
+      color: #66757f;
+      text-decoration: none;
+    }
+  }  
+} 

@@ -1,0 +1,12 @@
+.card
+  .card-heading
+  .avatar.img-thumbnail
+    %img.img-responsive{alt: "", src: "/assets/no-user.png"}
+  .info
+    %h3
+      %a{href: user_profile_path(current_user)}
+        = user
+    .desc
+      = user.email
+  #user-status
+    = render "status", user: user

@@ -1,8 +1,10 @@
 @import "_variables";
+@import "_mixins";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
 @import "users";
+@import "profiles";
 @import "posts";
 
 body {

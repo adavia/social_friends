@@ -1,0 +1,18 @@
+.row
+  .col-md-4.col-sm-6
+    .card
+      .card-heading
+      .avatar.img-thumbnail
+        %img.img-responsive{alt: "", src: "/assets/no-user.png"}
+      .info
+        %h3
+          %a{href: user_profile_path(@user)}
+            = @user
+        .desc
+          = fa_icon("calendar")
+          Joined in
+          = @user.created_at.strftime("%B %Y")
+    
+  .col-md-7
+    #render-posts
+      = render @posts

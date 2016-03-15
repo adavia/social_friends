@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307153707) do
+ActiveRecord::Schema.define(version: 20160312171004) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "file"
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 20160307153707) do
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "profiles", force: :cascade do |t|
+    t.date     "birthday"
+    t.string   "location"
+    t.string   "gender"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "leader_id"

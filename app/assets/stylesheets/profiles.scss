@@ -1,0 +1,43 @@
+// Place all the styles related to the profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.card {
+  border: 1px solid #e1e8ed;
+  position: relative;
+  padding-top: 0;
+  overflow: hidden;
+  text-align: center;
+  background-color: rgba(214, 224, 226, 0.2);
+  height: 260px;
+  .card-heading {
+    background: #66afe9;
+    height: 100px;
+    background-size: cover;
+  }
+  .avatar {
+    position: relative;
+    top: -50px;
+    margin-bottom: -50px;
+    img {
+      max-width: 100px;
+      max-height: 100px;
+    }
+  }
+  .info {
+    margin-bottom: 5px;
+    h3 {
+      margin-top: 5px;
+      margin-bottom: 3px;
+      vertical-align: middle;
+    }
+    .desc {
+      overflow: hidden;
+      font-size: 12px;
+      line-height: 20px;
+      color: #737373;
+      text-overflow: ellipsis;
+    }
+  } 
+}
+

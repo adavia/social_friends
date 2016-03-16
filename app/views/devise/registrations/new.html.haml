@@ -7,7 +7,13 @@
       .form-inputs
         = f.input :username, required: true, autofocus: true
         = f.input :email, required: true
-        = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable)
+        = f.fields_for :profile do |profile_fields|
+          = profile_fields.input :gender, collection: [:male, :female], required: true
+          = profile_fields.input :birthday, as: :date, start_year: Date.today.year - 90,
+            end_year: Date.today.year - 12
+          = profile_fields.input :location, required: true
+        = f.input :password, required: true, 
+          hint: ("#{@minimum_password_length} characters minimum" if @validatable)
         = f.input :password_confirmation, required: true
       .form-actions
         = f.button :submit, "Sign up", data:{"disable-with": "Signing up.."}

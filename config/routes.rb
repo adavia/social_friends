@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root "pages#index"
 
-  devise_for :user, path: "accounts"
+  devise_for :user, path: "accounts", controllers: {registrations: "users/registrations"}
 
   resources :users, only: [] do 
     resource :profile

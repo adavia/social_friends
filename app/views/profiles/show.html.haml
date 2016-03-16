@@ -3,7 +3,7 @@
     .card
       .card-heading
       .avatar.img-thumbnail
-        %img.img-responsive{alt: "", src: "/assets/no-user.png"}
+        %img.img-responsive{alt: "No User", src: "/assets/no-user.png"}
       .info
         %h3
           %a{href: user_profile_path(@user)}
@@ -13,6 +13,23 @@
           Joined in
           = @user.created_at.strftime("%B %Y")
     
-  .col-md-7
+  .col-md-6
     #render-posts
       = render @posts
+
+  .col-md-2
+    .panel-container
+      .profile-data
+        %h4 Followers
+        %h3
+          = @user.followers.count
+        %h4 Following
+        %h3
+          = @user.leaders.count
+        %h4 Posts
+        %h3
+          = @user.posts.count
+
+      .profile-settings
+        = link_to "Edit Profile", edit_user_profile_path(@user), class: "btn btn-primary btn-sm"
+

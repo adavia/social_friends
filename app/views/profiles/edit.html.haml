@@ -13,8 +13,8 @@
           = @user.created_at.strftime("%B %Y")
     
   .col-md-6
-    #render-posts
-      = render @posts
+    #edit-profile
+      = render "form", user: @user
 
   .col-md-2
     .panel-container
@@ -28,8 +28,3 @@
         %h4 Posts
         %h3
           = @user.posts.count
-
-      .profile-settings
-        = link_to "Edit Profile", edit_user_profile_path(@user, @user.profile),
-          class: "btn btn-primary btn-sm"
-

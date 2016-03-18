@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   devise_for :user, path: "accounts", controllers: {registrations: "users/registrations"}
 
   resources :users, only: [] do 
-    resource :profile
+    resources :profiles
   end
 
   resources :posts, only: [:index, :create, :destroy]

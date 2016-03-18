@@ -4,8 +4,7 @@
     %img.img-responsive{alt: "", src: "/assets/no-user.png"}
   .info
     %h3
-      %a{href: user_profile_path(current_user)}
-        = user
+      = link_to user, [current_user, current_user.profile]
     .desc
       = user.email
   #user-status

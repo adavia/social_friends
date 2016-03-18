@@ -1,0 +1,10 @@
+.panel-container
+  %header
+    %h2 Edit profile
+
+  = simple_form_for([user, user.profile], data: { behavior: "edit-profile" }) do |f|  
+    = f.input :gender, collection: [:male, :female], required: true
+    = f.input :birthday, as: :date, start_year: Date.today.year - 90,
+      end_year: Date.today.year - 12
+    = f.input :location, required: true
+    = f.button :submit, "Submit", class: "btn btn-sm"

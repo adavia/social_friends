@@ -1,8 +1,13 @@
 require "rails_helper"
 
 RSpec.describe PostsController, type: :controller do
-  let(:user) { FactoryGirl.create(:user) }
-  let(:user_2) { FactoryGirl.create(:user, username: "something", email: "something@hotmail.com") }
+  let(:user) { FactoryGirl.create(:user, profile: FactoryGirl.create(:profile)) }
+  let(:user_2) do
+    FactoryGirl.create(:user, username: "something", email: "something@hotmail.com",
+      profile: FactoryGirl.create(:profile, gender: "male",
+      birthday: DateTime.now - 3.year,
+      location: "Australia"))
+  end
 
   before :each do
     sign_in user

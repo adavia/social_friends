@@ -1,0 +1,15 @@
+.card
+  .card-heading
+  .avatar.img-thumbnail
+    %img.img-responsive{alt: "No User", src: "/assets/no-user.png"}
+  .info
+    %h3
+      = link_to user, [user, user.profile]
+    .desc
+      = fa_icon("calendar")
+      Joined in
+      = user.created_at.strftime("%B %Y")
+
+.panel-container
+  = link_to "Edit Profile", edit_user_profile_path(user, user.profile),
+    class: "btn btn-primary btn-sm"

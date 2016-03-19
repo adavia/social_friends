@@ -1,11 +1,11 @@
 require "rails_helper"
 
 RSpec.feature "Users can view user profiles" do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryGirl.create(:user, profile: FactoryGirl.create(:profile)) }
   
   before do
     login_as(user)
-    visit user_profile_path(user)
+    visit user_profile_path(user, user.profile)
   end
 
   scenario "with user details" do

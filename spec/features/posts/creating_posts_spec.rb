@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Users can create new posts" do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryGirl.create(:user, profile: FactoryGirl.create(:profile)) }
 
   before do
     login_as(user)

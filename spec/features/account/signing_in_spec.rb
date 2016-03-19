@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Users can sign in" do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryGirl.create(:user, profile: FactoryGirl.create(:profile)) }
 
   scenario "when providing valid details" do
     visit "/"

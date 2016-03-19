@@ -1,20 +1,10 @@
 .row
   .col-md-4.col-sm-6
-    .card
-      .card-heading
-      .avatar.img-thumbnail
-        %img.img-responsive{alt: "No User", src: "/assets/no-user.png"}
-      .info
-        %h3
-          = link_to @user, [@user, @user.profile]
-        .desc
-          = fa_icon("calendar")
-          Joined in
-          = @user.created_at.strftime("%B %Y")
+    = render "settings", user: @user
     
   .col-md-6
     #edit-profile
-      = render "form", user: @user
+      = render "form", user: @user, profile: @profile
 
   .col-md-2
     .panel-container

@@ -7,7 +7,7 @@ RSpec.feature "Users can edit their own profile" do
     login_as(user)
     
     visit user_profile_path(user, user.profile)
-    click_link "Edit Profile"
+    click_link "Profile"
   end
 
   scenario "with valid attributes" do

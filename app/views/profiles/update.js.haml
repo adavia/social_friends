@@ -1,0 +1,6 @@
+- if @profile.errors.any?
+  $("#edit-profile").html("#{ j render 'form', user: @user, profile: @profile }");
+- else
+  $("#edit_profile_#{@profile.id}").find(".form-group").removeClass("has-error");
+  $("#edit_profile_#{@profile.id}").find("span.help-block").remove();
+  alert("Your profile has been updated");

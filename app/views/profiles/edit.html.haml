@@ -3,8 +3,10 @@
     = render "settings", user: @user
     
   .col-md-6
-    #edit-profile
-      = render "form", user: @user, profile: @profile
+    .panel-container
+      %h2 Edit profile
+      #edit-profile
+        = render "form", user: @user, profile: @profile
 
   .col-md-2
     .panel-container

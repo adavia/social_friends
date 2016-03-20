@@ -1,0 +1,6 @@
+- if resource.errors.any?
+  $("#edit-account").html("#{ j render 'form' }");
+- else
+  $("#edit_user").find(".form-group").removeClass("has-error");
+  $("#edit_user").find("span.help-block").remove();
+  alert("Your account has been updated");

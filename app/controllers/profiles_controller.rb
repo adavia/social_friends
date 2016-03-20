@@ -19,6 +19,7 @@ class ProfilesController < ApplicationController
         format.html { 
           redirect_to [@user, @profile]
         }
+        format.js   {}
         format.json { 
           render json: @profile, status: :created, location: [@user, @profile]
         }
@@ -26,6 +27,7 @@ class ProfilesController < ApplicationController
         format.html { 
           render action: "edit"
         }
+        format.js   {}
         format.json { 
           render json: @profile.errors, status: :unprocessable_entity 
         }
@@ -48,6 +50,6 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:gender, :birthday, :location)
+    params.require(:profile).permit(:gender, :birthday, :location, :note)
   end
 end

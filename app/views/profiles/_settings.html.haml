@@ -11,5 +11,8 @@
       = user.created_at.strftime("%B %Y")
 
 .panel-container
-  = link_to "Edit Profile", edit_user_profile_path(user, user.profile),
-    class: "btn btn-primary btn-sm"
+  .clearfix
+    .pull-right
+      = link_to "Settings", edit_user_registration_path, class: "btn btn-default btn-xs"
+      = link_to "Profile", edit_user_profile_path(user, user.profile),
+        class: "btn btn-primary btn-xs"

@@ -1,7 +1,7 @@
 class Attachment < ActiveRecord::Base
-  belongs_to :post
+  belongs_to :attachable, polymorphic: true
 
-  validates :post, presence: true
+  validates :attachable_id, presence: true
 
   mount_uploader :file, AttachmentUploader
 end

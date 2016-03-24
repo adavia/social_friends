@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322020605) do
+ActiveRecord::Schema.define(version: 20160323170508) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "file"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160322020605) do
   end
 
   add_index "attachments", ["attachable_id"], name: "index_attachments_on_attachable_id"
+  add_index "attachments", ["attachable_type"], name: "index_attachments_on_attachable_type"
 
   create_table "posts", force: :cascade do |t|
     t.text     "body"

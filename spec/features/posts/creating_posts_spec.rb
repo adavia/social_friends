@@ -29,7 +29,7 @@ RSpec.feature "Users can create new posts" do
 
     click_button "Publish"
 
-    within(".post-content .attachments") do
+    within(".post-attachments") do
       expect(page).to have_xpath("//img[contains(@src,'photo1.jpg')]")
     end
   end

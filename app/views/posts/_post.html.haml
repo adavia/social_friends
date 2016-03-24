@@ -17,6 +17,6 @@
     %p
       = post.body
     - if post.attachments.any?
-      .attachments
+      .post-attachments
         - post.attachments.each do |attachment|
           = image_tag attachment.file.url(:thumb), class: "img-thumbnail img-responsive"

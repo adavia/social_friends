@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
 
 	has_many :posts, dependent: :destroy
 
+  has_many :attachments, as: :attachable, dependent: :destroy
+
   validates :username, presence: true
   validates :username, uniqueness: true
   validates :username, length: { minimum: 5 }

@@ -1,0 +1,25 @@
+.row
+  .col-md-4.col-sm-6
+    = render "profiles/settings", user: @attachable
+    
+  .col-md-6
+    .panel-container
+      %h2 Images
+      #attachments-form
+        - if @attachable == current_user
+          = render "form", attachment: @attachment, attachable: @attachable
+      #user-attachments
+        = render @attachments
+
+  .col-md-2
+    .panel-container
+      .profile-data
+        %h4 Followers
+        %h3
+          = @attachable.followers.count
+        %h4 Following
+        %h3
+          = @attachable.leaders.count
+        %h4 Posts
+        %h3
+          = @attachable.posts.count

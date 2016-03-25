@@ -6,7 +6,7 @@ RSpec.feature "Users can edit their own profile" do
   before do
     login_as(user)
     
-    visit user_profile_path(user, user.profile)
+    visit user_profile_path(user, :profile)
     click_link "Profile"
   end
 

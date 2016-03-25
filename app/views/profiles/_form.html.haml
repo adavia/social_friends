@@ -1,4 +1,4 @@
-= simple_form_for([user, profile], remote: true) do |f|  
+= simple_form_for([user, profile], url: { action: "update" }, remote: true) do |f|  
   = f.input :gender, collection: [:male, :female], required: true
   = f.input :birthday, as: :date, start_year: Date.today.year,
     end_year: Date.today.year - 70

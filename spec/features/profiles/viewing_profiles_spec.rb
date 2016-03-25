@@ -5,7 +5,7 @@ RSpec.feature "Users can view user profiles" do
   
   before do
     login_as(user)
-    visit user_profile_path(user, user.profile)
+    visit user_profile_path(user, :profile)
   end
 
   scenario "with user details" do

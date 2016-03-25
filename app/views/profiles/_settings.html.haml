@@ -4,7 +4,7 @@
     %img.img-responsive{alt: "No User", src: "/assets/no-user.png"}
   .info
     %h3
-      = link_to user, [user, user.profile]
+      = link_to user, [user, :profile]
     .desc
       = fa_icon("calendar")
       Joined in
@@ -16,5 +16,4 @@
     .pull-right
       - if user == current_user
         = link_to "Settings", edit_user_registration_path, class: "btn btn-default btn-xs"
-        = link_to "Profile", edit_user_profile_path(user, user.profile),
-          class: "btn btn-primary btn-xs"
+        = link_to "Profile", [:edit, user, :profile], class: "btn btn-primary btn-xs"

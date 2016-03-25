@@ -17,11 +17,11 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { 
-          redirect_to [@user, @profile]
+          redirect_to [:edit, @user, :profile]
         }
         format.js   {}
         format.json { 
-          render json: @profile, status: :created, location: [@user, @profile]
+          render json: @profile, status: :created, location: [:edit, @user, :profile]
         }
       else
         format.html { 

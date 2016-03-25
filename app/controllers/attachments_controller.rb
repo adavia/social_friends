@@ -9,27 +9,15 @@ class AttachmentsController < ApplicationController
   end
 
   def create
-    @attachment = current_user.attachments.build
-
     respond_to do |format|
-      if @attachment.save
-        upload_files
-        format.html { 
-          redirect_to [@attachable, :attachments]
-        }
-        format.js   {}
-        format.json { 
-          render json: @attachment, status: :created, location: [@attachable, :attachments]
-        }
-      else
-        format.html { 
-          render :show 
-        }
-        format.js   {}
-        format.json { 
-          render json: @attachment.errors, status: :unprocessable_entity 
-        }
-      end
+      upload_files
+      format.html { 
+        redirect_to [@attachable, :attachments]
+      }
+      format.js   {}
+      format.json { 
+        render json: @attachment, status: :created, location: [@attachable, :attachments]
+      }
     end
   end
 
@@ -50,9 +38,14 @@ class AttachmentsController < ApplicationController
 
   def upload_files  
     if params[:attachments] && params[:attachments][:file] != [""]
+      @attachments = []
       params[:attachments][:file].each do |a|
-        @attachment = @attachable.attachments.create!(file: a)
+        @attachments << @attachable.attachments.create!(file: a)
       end
     end 
+  end
+
+  def attachment_params
+    params.require(:attachments).permit(:file)
   end
 end 

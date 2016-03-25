@@ -5,11 +5,15 @@
   .col-md-6
     .panel-container
       %h2 Images
-      #attachments-form
-        - if @attachable == current_user
+      - if @attachable == current_user
+        #attachments-form
           = render "form", attachment: @attachment, attachable: @attachable
-      #user-attachments
-        = render @attachments
+        .row
+          .col-md-9
+            #img-holder
+      .row
+        #user-attachments
+          = render "attachment", collection: @attachments
 
   .col-md-2
     .panel-container

@@ -17,3 +17,4 @@
 //= require jquery.form
 //= require init
 //= require posts
+//= require attachments

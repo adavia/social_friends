@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
     username
   end
 
+  def timeline_user_ids
+    leader_ids + [id]
+  end
+
 	def following?(leader)
 		leaders.include? leader
 	end
@@ -36,4 +40,10 @@ class User < ActiveRecord::Base
 			leaders << leader
 		end
 	end
+
+  def unfollow!(leader)
+    if leader != self && following?(leader)
+      leaders.delete(leader)
+    end
+  end
 end

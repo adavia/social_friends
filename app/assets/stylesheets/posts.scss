@@ -2,23 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#img-holder {
-  margin-top: 10px;
-  img {
-    @extend .img-thumbnail;
-    @extend .img-responsive;
-    position: relative;
-    float: left;
-    width: 100px;
-    height: 80px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-}
-
 .media-user {
   margin-bottom: 10px;
   .media-body {

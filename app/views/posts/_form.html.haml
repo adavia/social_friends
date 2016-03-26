@@ -1,9 +1,9 @@
-= simple_form_for(post, data: { behavior: "new-post" }) do |f|  
+= simple_form_for(post, data: { behavior: "submit-post" }) do |f|  
   = f.input :body, label: false, placeholder: "What are you thinking?", input_html: {rows: 3}
-  .pull-left
-    = f.simple_fields_for :attachments do |ff|
-      %span.btn-file
-        = fa_icon "camera", text: "Upload"
-        = ff.file_field :file, label: false, multiple: true, name: "attachments[file][]"
-  .pull-right
+  .form-buttons
+    - if !post.persisted?
+      = f.simple_fields_for :attachments do |ff|
+        %span.btn-file
+          = fa_icon "camera", text: "Upload"
+          = ff.file_field :file, label: false, multiple: true, name: "attachments[file][]"
     = f.button :submit, "Publish", class: "btn btn-sm"

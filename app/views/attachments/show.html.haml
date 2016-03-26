@@ -7,10 +7,8 @@
       %h2 Images
       - if @attachable == current_user
         #attachments-form
-          = render "form", attachment: @attachment, attachable: @attachable
-        .row
-          .col-md-9
-            #img-holder
+          = render "form", attachment: @attachment, attachable: @attachable 
+        #img-holder
       .row
         #user-attachments
           = render "attachment", collection: @attachments

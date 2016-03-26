@@ -9,6 +9,9 @@
       = fa_icon("calendar")
       Joined in
       = user.created_at.strftime("%B %Y")
+    - if current_user != user
+      #user-actions
+        = render "actions", user: user
 
 .panel-container
   .clearfix

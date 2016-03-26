@@ -8,11 +8,19 @@ Rails.application.routes.draw do
   devise_for :user, path: "accounts", controllers: {registrations: "users/registrations"}
 
   resources :users, only: [] do 
-    resource :profile, only: [:show, :edit, :update]
+    resource :profile, only: [:show, :edit, :update] do
+      member do
+        post :follow
+      end
+      member do
+        post :unfollow
+      end
+    end
+
     resource :attachments, only: [:show, :create, :destroy]
   end
 
-  resources :posts, only: [:index, :create, :destroy]
+  resources :posts, only: [:index, :create, :edit, :update, :destroy]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -6,7 +6,7 @@ class App.Post
   constructor: (el) ->
     @el = $(el)
 
-  upload: ->
+  submit: ->
     @el.ajaxSubmit
       url: @el.attr("action")
       type: "POST"
@@ -23,38 +23,14 @@ class App.Post
     button.prop("disabled", status)
     button.val(text)
 
-  previewImages: ->
-    img_holder = $("#img-holder")
-    img_holder.empty()
-
-    count_files = @el[0].files.length
-    path = @el[0].value
-    ext = path.substring(path.lastIndexOf('.') + 1).toLowerCase()
-
-    if ext == "gif" or ext == "png" or ext == "jpg" or ext == "jpeg"
-      if typeof FileReader != "undefined"
-        i = 0
-        while i < count_files
-          reader = new FileReader
-          reader.onload = (e) ->
-            $("<img />",
-              "src": e.target.result).appendTo img_holder
-          img_holder.show()
-          reader.readAsDataURL @el[0].files[i]
-          i++
-      else
-        console.log 'This browser does not support FileReader.'
-    else
-      console.log 'Pls select only images'
-
-$(document).on "page:change", ->
+$(document).on "change", "input[type='file']", (event) ->
   return unless $(".posts.index").length > 0
-  $(document).on "submit", "[data-behavior~=new-post]", (event) ->
-    event.preventDefault()
-    post = new App.Post @
-    post.toggleButton(true, "Publishing..")
-    post.upload()
+  post = new App.Attachment @
+  post.previewImages()
 
-  $(document).on "change", "input[type='file']", (event) ->
-    post = new App.Post @
-    post.previewImages()
+$(document).on "submit", "[data-behavior~=submit-post]", (event) ->
+  return unless $(".posts.index").length > 0 or $(".posts.edit").length > 0
+  event.preventDefault()
+  post = new App.Post @
+  post.toggleButton(true, "Publishing..")
+  post.submit()

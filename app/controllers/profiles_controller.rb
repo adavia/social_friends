@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :follow, :unfollow]
   before_action :profile_owner!, only: [:edit, :update]
 
   def show
@@ -32,6 +32,26 @@ class ProfilesController < ApplicationController
           render json: @profile.errors, status: :unprocessable_entity 
         }
       end
+    end
+  end
+
+  def follow
+    respond_to do |format|
+      current_user.follow!(@user)
+      format.html { 
+        redirect_to [@user, :profile]
+      }
+      format.js   {}
+    end
+  end
+
+  def unfollow
+    respond_to do |format|
+      current_user.unfollow!(@user)
+      format.html { 
+        redirect_to [@user, :profile]
+      }
+      format.js   {}
     end
   end
 

@@ -9,7 +9,7 @@
   overflow: hidden;
   text-align: center;
   background-color: rgba(214, 224, 226, 0.2);
-  height: 260px;
+  height: 270px;
   .card-heading {
     background: #66afe9;
     height: 100px;
@@ -37,6 +37,9 @@
       line-height: 20px;
       color: #737373;
       text-overflow: ellipsis;
+    }
+    #user-actions {
+      margin-top: 10px;
     }
   } 
 }

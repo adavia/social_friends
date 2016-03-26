@@ -1,5 +1,6 @@
-= simple_form_for([attachable, attachment], data: { behavior: "new-attachment" }) do |f|  
-  %span.btn-file
-    = fa_icon "camera", text: "Upload images.."
-    = f.file_field :file, label: false, multiple: true, name: "attachments[file][]"
-  = f.button :submit, "Submit", class: "btn btn-sm"
+= simple_form_for([attachable, attachment], data: { behavior: "new-attachment" }) do |f|
+  .form-buttons
+    %span.btn-file
+      = fa_icon "camera", text: "Upload images.."
+      = f.file_field :file, label: false, multiple: true, name: "attachments[file][]"
+    = f.button :submit, "Submit", class: "btn btn-sm"

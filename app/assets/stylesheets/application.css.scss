@@ -36,6 +36,10 @@ form {
   }
 }
 
+.form-buttons {
+  margin-bottom: 10px;
+}
+
 header {
   @extend .page-header;
   position: relative;

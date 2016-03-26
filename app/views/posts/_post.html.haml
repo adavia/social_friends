@@ -2,7 +2,15 @@
   = div_for(post, class: "post-content") do
     - if post.user.id == current_user.id
       .pull-right
-        = link_to fa_icon("remove"), post, method: :delete, remote: true, title: "Remove post"
+        .btn-group
+          %button.btn.btn-default.dropdown-toggle{"aria-expanded": "false", 
+            "aria-haspopup": "true", "data-toggle": "dropdown", :type => "button"}
+            = fa_icon "chevron-down"
+          %ul.dropdown-menu
+            %li
+              = link_to "Edit", [:edit, post], remote: true
+            %li
+              = link_to "Delete", post, method: :delete, remote: true
     .media-user
       .media
         .media-left.media-bottom
@@ -20,5 +28,5 @@
       .row
         .post-attachments
           - post.attachments.each do |attachment|
-            .col-md-4
+            .col-md-4.col-xs-4
               = link_to image_tag(attachment.file.url(:thumb), class: "img-responsive"), "#", class: "thumbnail"

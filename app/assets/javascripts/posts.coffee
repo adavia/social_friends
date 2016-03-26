@@ -29,7 +29,7 @@ $(document).on "change", "input[type='file']", (event) ->
   post.previewImages()
 
 $(document).on "submit", "[data-behavior~=submit-post]", (event) ->
-  return unless $(".posts.index").length > 0 or $(".posts.edit").length > 0
+  return unless $(".posts.index").length > 0 or $(".profiles.show").length > 0
   event.preventDefault()
   post = new App.Post @
   post.toggleButton(true, "Publishing..")

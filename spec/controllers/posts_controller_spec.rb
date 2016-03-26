@@ -13,11 +13,20 @@ RSpec.describe PostsController, type: :controller do
     sign_in user
   end
 
-  it "handles owner permission errors by redirecting to a safe place" do
-    post = FactoryGirl.create(:post, body: "Some cool text here",
+  it "handles owner permission errors by redirecting to a safe place when deleting" do
+    new_post = FactoryGirl.create(:post, body: "Some cool text here",
       user: user_2)
 
-    get :destroy, id: post
+    get :destroy, id: new_post
+    
+    expect(response).to redirect_to(posts_path)
+  end
+
+  it "handles owner permission errors by redirecting to a safe place when updating" do
+    new_post = FactoryGirl.create(:post, body: "Some cool text here",
+      user: user_2)
+
+    post :update, id: new_post
     
     expect(response).to redirect_to(posts_path)
   end

@@ -15,13 +15,5 @@
 
   .col-md-2
     .panel-container
-      .profile-data
-        %h4 Followers
-        %h3
-          = @attachable.followers.count
-        %h4 Following
-        %h3
-          = @attachable.leaders.count
-        %h4 Posts
-        %h3
-          = @attachable.posts.count
+      #profile-status
+        = render "profiles/status", user: @attachable

@@ -8,11 +8,13 @@ RSpec.feature "Users can delete posts" do
 
   before do
     login_as(user)
-    visit posts_path
+
+    visit user_profile_path(user)
+    click_button "actions"
   end
 
   scenario "successfully", js: true do
-    click_link "Remove post"
+    click_link "Delete"
     
     expect(page).to_not have_content "Example post"
   end

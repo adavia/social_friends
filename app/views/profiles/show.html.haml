@@ -8,14 +8,6 @@
 
   .col-md-2
     .panel-container
-      .profile-data
-        %h4 Followers
-        %h3
-          = @user.followers.count
-        %h4 Following
-        %h3
-          = @user.leaders.count
-        %h4 Posts
-        %h3
-          = @user.posts.count
+      #profile-status
+        = render "status", user: @user
 

@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require jquery.form
+//= require fancybox
 //= require init
 //= require posts
 //= require attachments

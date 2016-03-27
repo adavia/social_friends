@@ -1,6 +1,5 @@
-= image_tag(@attachment.file.url, class: "img-responsive")
-
 .row
-  .col-md-6
-    #likable-actions
+  .col-md-12
+    = image_tag(@attachment.file.url, class: "img-responsive")
+    = div_for(@attachment, :like, class: "likable-actions") do
       = render "likes/like", likable: @attachment

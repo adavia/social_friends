@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:index, :create, :edit, :update, :destroy] do
     resource :like, only: [:create, :destroy]
+    resources :attachments, only: [:show]
   end
 
   # Example of regular route:

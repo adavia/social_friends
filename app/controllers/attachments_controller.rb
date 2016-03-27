@@ -10,6 +10,7 @@ class AttachmentsController < ApplicationController
 
   def show
     @attachment = @attachable.attachments.find(params[:id])
+    render layout: !request.xhr?
   end
 
   def create

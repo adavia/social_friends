@@ -59,8 +59,3 @@ $(document).on "submit", "[data-behavior~=new-attachment]", (event) ->
   attach = new App.Attachment @
   attach.toggleButton(true, "Submitting..")
   attach.upload()
-
-$(document).on "page:change", ->
-  return unless $(".attachments.index").length > 0
-  attach = new App.Attachment
-  attach.fancybox()

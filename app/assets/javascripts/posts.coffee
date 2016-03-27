@@ -23,9 +23,6 @@ class App.Post
     button.prop("disabled", status)
     button.val(text)
 
-  fancybox: ->
-    $("a.fancy-post").fancybox({ parent: "body"})
-
 $(document).on "change", "input[type='file']", (event) ->
   return unless $(".posts.index").length > 0
   post = new App.Attachment @
@@ -37,8 +34,3 @@ $(document).on "submit", "[data-behavior~=submit-post]", (event) ->
   post = new App.Post @
   post.toggleButton(true, "Publishing..")
   post.submit()
-
-$(document).on "page:change", ->
-  return unless $(".posts.index").length > 0 or $(".profiles.show").length > 0
-  post = new App.Post
-  post.fancybox()

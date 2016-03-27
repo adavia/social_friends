@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.post-attachments {
+  border-bottom: 1px #e1e8ed solid;
+  padding-bottom: 10px;
+}
+
 #user-attachments {
   margin-top: 20px;
 }

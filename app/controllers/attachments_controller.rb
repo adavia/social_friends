@@ -1,11 +1,15 @@
 class AttachmentsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
-  before_action :set_attachable, only: [:show, :create]
+  before_action :set_attachable
   before_action :user_owner!, only: [:create]
 
-  def show
+  def index
     @attachments = @attachable.attachments
     @attachment = current_user.attachments.build
+  end
+
+  def show
+    @attachment = @attachable.attachments.find(params[:id])
   end
 
   def create

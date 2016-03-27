@@ -1,19 +1,6 @@
-.row
-  .col-md-4.col-sm-6
-    = render "profiles/settings", user: @attachable
-    
-  .col-md-6
-    .panel-container
-      %h2 Images
-      - if @attachable == current_user
-        #attachments-form
-          = render "form", attachment: @attachment, attachable: @attachable 
-        #img-holder
-      .row
-        #user-attachments
-          = render "attachment", collection: @attachments
+= image_tag(@attachment.file.url, class: "img-responsive")
 
-  .col-md-2
-    .panel-container
-      #profile-status
-        = render "profiles/status", user: @attachable
+.row
+  .col-md-6
+    #likable-actions
+      = render "likes/like", likable: @attachment

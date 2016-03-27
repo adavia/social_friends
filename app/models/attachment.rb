@@ -1,5 +1,6 @@
 class Attachment < ActiveRecord::Base
   belongs_to :attachable, polymorphic: true
+  has_many :likes, as: :likable, dependent: :destroy
 
   validates :attachable_id, presence: true
 

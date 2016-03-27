@@ -49,13 +49,18 @@ class App.Attachment
       alert "This browser does not support HTML5 FileReader."
 
 $(document).on "change", "input[type='file']", (event) ->
-  return unless $(".attachments.show").length > 0
+  return unless $(".attachments.index").length > 0
   attach = new App.Attachment @
   attach.previewImages()
 
 $(document).on "submit", "[data-behavior~=new-attachment]", (event) ->
-  return unless $(".attachments.show").length > 0
+  return unless $(".attachments.index").length > 0
   event.preventDefault()
   attach = new App.Attachment @
   attach.toggleButton(true, "Submitting..")
   attach.upload()
+
+$(document).on "page:change", ->
+  return unless $(".attachments.index").length > 0
+  attach = new App.Attachment
+  attach.fancybox()

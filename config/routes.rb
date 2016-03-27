@@ -17,10 +17,16 @@ Rails.application.routes.draw do
       end
     end
 
-    resource :attachments, only: [:show, :create, :destroy]
+    resources :attachments, only: [:index, :show, :create, :destroy]
   end
 
-  resources :posts, only: [:index, :create, :edit, :update, :destroy]
+  resources :attachments, only: [] do
+    resource :like, only: [:create, :destroy]
+  end
+
+  resources :posts, only: [:index, :create, :edit, :update, :destroy] do
+    resource :like, only: [:create, :destroy]
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

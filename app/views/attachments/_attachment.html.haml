@@ -1,3 +1,4 @@
 - @attachments.each do |attachment|
   .col-xs-4.col-md-4
-    = link_to image_tag(attachment.file.url(:thumb), class: "img-responsive"), "#", class: "thumbnail"
+    = link_to image_tag(attachment.file.url(:thumb), class: "img-responsive"),
+      [attachment.attachable, attachment], class: "thumbnail fancy-profile"

@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
 
   has_many :attachments, as: :attachable, dependent: :destroy
 
+  has_many :likes, dependent: :destroy
+
   validates :username, presence: true
   validates :username, uniqueness: true
   validates :username, length: { minimum: 5 }
@@ -45,5 +47,9 @@ class User < ActiveRecord::Base
     if leader != self && following?(leader)
       leaders.delete(leader)
     end
+  end
+
+  def like?(model)
+    self.likes.find_by_likable_id_and_likable_type(model, model.class.name)
   end
 end

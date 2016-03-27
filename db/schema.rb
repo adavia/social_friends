@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323170508) do
+ActiveRecord::Schema.define(version: 20160326181641) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "file"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20160323170508) do
 
   add_index "attachments", ["attachable_id"], name: "index_attachments_on_attachable_id"
   add_index "attachments", ["attachable_type"], name: "index_attachments_on_attachable_type"
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "likable_id"
+    t.string   "likable_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "likes", ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id"
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
 
   create_table "posts", force: :cascade do |t|
     t.text     "body"

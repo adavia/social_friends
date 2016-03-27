@@ -1,0 +1,10 @@
+- if current_user.like?(likable)
+  = link_to fa_icon("heart"), 
+    [likable, :like], method: :delete, title: "Unlike"
+  %strong
+    = likable.likes.count
+- else
+  = link_to fa_icon("heart-o"), 
+    [likable, :like], method: :post, title: "Like"
+  %strong
+    = likable.likes.count

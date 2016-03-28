@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326181641) do
+ActiveRecord::Schema.define(version: 20160327170746) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "file"
     t.integer  "attachable_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "attachable_type"
+    t.boolean  "primary",         default: false
   end
 
   add_index "attachments", ["attachable_id"], name: "index_attachments_on_attachable_id"

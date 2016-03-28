@@ -15,14 +15,13 @@
     .media-user
       .media
         .media-left.media-bottom
-          = link_to image_tag("/assets/no-user.png",
-            class: "media-object img-thumbnail", width: "50"), root_path
+          = link_to image_tag(user_avatar(post.user),
+            class: "media-object img-thumbnail", width: "50"), [post.user, :profile]
         .media-body
           %h5.media-heading 
             = post.user
           %small
             = time_ago_in_words post.created_at
-
     %p
       = post.body
     - if post.attachments.any?
@@ -32,5 +31,6 @@
             .col-md-4.col-xs-4
               = link_to image_tag(attachment.file.url(:thumb), class: "img-responsive"),
                 [attachment.attachable, attachment], class: "thumbnail fancybox"
-      = div_for(post, :like, class: "likable-actions") do
-        = render "likes/like", likable: post
+      .attachment-actions
+        = div_for(post, :like, class: "likable-actions") do
+          = render "likes/like", likable: post

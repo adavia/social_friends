@@ -1,6 +1,6 @@
 - if current_user.following?(user)
-  = button_to "Unfollow", [:unfollow, user, :profile],
+  = button_to "Unfollow", [:unfollow, user],
     remote: true, class: "btn btn-warning btn-xs"
 - else 
-  = button_to "Follow", [:follow, user, :profile],
+  = button_to "Follow", [:follow, user],
     remote: true, class: "btn btn-primary btn-xs"

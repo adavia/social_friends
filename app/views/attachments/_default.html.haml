@@ -1,0 +1,7 @@
+- if attachment.primary
+  = fa_icon("toggle-on")
+  %strong Default image
+- else
+  = link_to fa_icon("toggle-off"), [:primary, attachment.attachable, attachment], 
+    remote: true, method: :post, title: "Make your primary photo"
+  %strong Make default

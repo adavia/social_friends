@@ -12,4 +12,12 @@ module ApplicationHelper
       "active"
     end
   end
+
+  def user_avatar(user)
+    if user.attachments.default
+      user.attachments.default.file.url(:thumb)
+    else
+      "/assets/no-user.png"
+    end
+  end
 end

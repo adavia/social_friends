@@ -1,0 +1,5 @@
+= link_to content_tag(:small, "POSTS #{user.posts.count}"), [user, :profile]
+
+= link_to content_tag(:small, "FOLLOWING #{user.leaders.count}"), [:following, user]
+
+= link_to content_tag(:small, "FOLLOWERS #{user.followers.count}"), [:followers, user]

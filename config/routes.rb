@@ -8,16 +8,24 @@ Rails.application.routes.draw do
   devise_for :user, path: "accounts", controllers: {registrations: "users/registrations"}
 
   resources :users, only: [] do 
-    resource :profile, only: [:show, :edit, :update] do
+    member do
+      post :follow
+    end
+    member do
+      post :unfollow
+    end
+    member do
+      get :followers
+    end
+    member do
+      get :following
+    end
+    resource :profile, only: [:show, :edit, :update]
+    resources :attachments, only: [:index, :show, :create, :destroy] do
       member do
-        post :follow
-      end
-      member do
-        post :unfollow
+        post :primary
       end
     end
-
-    resources :attachments, only: [:index, :show, :create, :destroy]
   end
 
   resources :attachments, only: [] do

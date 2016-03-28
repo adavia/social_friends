@@ -1,7 +1,7 @@
 class AttachmentsController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!
   before_action :set_attachable
-  before_action :user_owner!, only: [:create]
+  before_action :user_owner!, only: [:create, :primary]
 
   def index
     @attachments = @attachable.attachments
@@ -23,6 +23,19 @@ class AttachmentsController < ApplicationController
       format.json { 
         render json: @attachment, status: :created, location: [@attachable, :attachments]
       }
+    end
+  end
+
+  def primary
+    respond_to do |format|
+      if @attachable.class == User
+        @attachment = Attachment.find(params[:id])
+        @attachment.make_default!(current_user)
+        format.html { 
+          redirect_to [@attachable, @attachment]
+        }        
+        format.js   {}
+      end
     end
   end
 

@@ -7,4 +7,13 @@ class Attachment < ActiveRecord::Base
   mount_uploader :file, AttachmentUploader
 
   default_scope -> { order(created_at: :desc) }
+
+  def make_default!(user)
+    Attachment.where(attachable: user).update_all(primary: false)
+    update!(primary: true)
+  end
+
+  def self.default
+    find_by(primary: true)
+  end
 end

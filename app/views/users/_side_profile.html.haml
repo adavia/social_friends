@@ -1,11 +1,11 @@
 .card
   .card-heading
   .avatar.img-thumbnail
-    %img.img-responsive{alt: "", src: "/assets/no-user.png"}
+    = image_tag(user_avatar(current_user), class: "img-responsive")
   .info
     %h3
       = link_to user, [current_user, :profile]
     .desc
       = user.email
   #user-status
-    = render "status", user: user
+    = render "users/status", user: user

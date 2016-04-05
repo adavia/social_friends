@@ -28,14 +28,12 @@ class AttachmentsController < ApplicationController
 
   def primary
     respond_to do |format|
-      if @attachable.class == User
-        @attachment = Attachment.find(params[:id])
-        @attachment.make_default!(current_user)
-        format.html { 
-          redirect_to [@attachable, @attachment]
-        }        
-        format.js   {}
-      end
+      @attachment = Attachment.find(params[:id])
+      @attachment.make_default!(current_user)
+      format.html { 
+        redirect_to [@attachable, @attachment]
+      }        
+      format.js   {}
     end
   end
 

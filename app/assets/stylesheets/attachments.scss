@@ -11,5 +11,6 @@
 }
 
 .attachment-actions {
+  @extend .list-inline;
   margin-top: 10px;
 }

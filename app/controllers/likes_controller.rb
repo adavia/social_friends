@@ -13,7 +13,6 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @user = current_user
     @like = @likable.likes.find_by_user_id(current_user)
     @like.destroy
     

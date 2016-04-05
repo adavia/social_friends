@@ -3,14 +3,5 @@
     = render "profiles/settings", user: @user
 
   .col-md-8 
-    .row  
-      - @users.each do |user|
-        .col-sm-3.col-md-3
-          .thumbnail
-            = image_tag("/assets/no-user.png", class: "img-responsive")
-            .caption
-              %h4 
-                = user
-              %p
-                = fa_icon("map-marker", text: user.profile.location)
-              = link_to "Profile", [user, :profile], class: "btn btn-xs btn-primary" 
+    .row
+      = render @users

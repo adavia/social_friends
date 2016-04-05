@@ -1,12 +1,11 @@
 .row
   .col-md-12
     = image_tag(@attachment.file.url, class: "img-responsive")
-    .attachment-actions
-      .row
-        .col-md-3
-          = div_for(@attachment, :like) do
-            = render "likes/like", likable: @attachment
-        - if @attachment.attachable == current_user && @attachment.attachable.class == "User".constantize
-          .col-md-5
-            = div_for(@attachment, :default) do
-              = render "attachments/default", attachment: @attachment
+    %ul.attachment-actions
+      %li
+        = div_for(@attachment, :like) do
+          = render "likes/like", likable: @attachment
+      - if @attachment.attachable == current_user
+        %li
+          = div_for(@attachment, :default) do
+            = render "attachments/default", attachment: @attachment
